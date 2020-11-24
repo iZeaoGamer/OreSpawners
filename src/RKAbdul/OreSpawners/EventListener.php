@@ -147,7 +147,7 @@ class EventListener implements Listener
                     $stacked = $tile->getData("stacked")->getValue();
                     if (in_array($item->getId(), $blocks)) {
                         if (!$event->getBlock()->getId() != $item->getId()) {
-                            if (!$stacked >= intval($this->cfg["max"])) {
+                            if ($stacked < intval($this->cfg["max"])) {
                                 $event->setCancelled(true);
                                 $tile->setData("stacked", $stacked + 1);
                                 $item->setCount($item->getCount() - 1);
